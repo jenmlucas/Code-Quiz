@@ -4,42 +4,45 @@ var timerBegins = document.getElementById("timerbegins");
 var questionText = document.getElementById("questionText");
 var questionAnswers = document.getElementById("questionAnswers");
 var newTime = document.getElementById("newTime");
-//var answerArrayQ1= ["Answer 1", "Answer 2", "Answer 3", "Answer 4"];
-//var questionArray= ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5"]
+var introBox = document.getElementById("introBox");
 
 var currentQuestion = 0;
 
 var quizList = [
     {
-        question: "Question 1:",
-        choices: ["A1", "B1", "C1", "D1"],
-        answer: "A1"
+        question: "Question 1: What does the Method concat() do?",
+        choices: ["A: Joins two or more strings", "B: Joins 2 or more arrays", "C: Changes the existing string", "D: Returns a new string"],
+        correctAnswer: "A: Joins two or more strings",
     },
     {
-        question: "Question 2:",
-        choices: ["A2", "B2", "C2", "D2"],
-        answer: "B2"
+        question: "Question 2: The DOM is built into the JavaScript language.",
+        choices: ["A: True", "B: False"],
+        correctAnswer: "B: False",
+
     },
     {
-        question: "Question 3:",
-        choices: ["A3", "B3", "C3", "D3"],
-        answer: "C3"
+        question: "Question 3: How do we use JavaScript to get the information entered into a form’s input field?",
+        choices: ["A: We can select the form’s input element and use the value property to read its data.", "B: We can select the form itself and use the value property to read all of its data.", "C: We can select the form’s input element and use the textContent or innerHTML properties to read its data."],
+        correctAnswer: "A: We can select the form’s input element and use the value property to read its data.",
     },
     {
-        question: "Question 4:",
-        choices: ["A4", "B4", "C4", "D4"],
-        answer: "D4"
+        question: "Question 4: Which of these values is NOT considered false?",
+        choices: ["A: 0", "B: '' ", "C: 'null' ", "D: '0' "],
+        correctAnswer: "D: '0' ",
     },
     {
-        question: "Question 5:",
-        choices: ["A5", "B5", "C5", "D5"],
-        answer: "D5"
-    }
+        question: "Question 5: Which statement correctly stores data into the Web Storage API?",
+        choices: ["A: localStorage.getItem('lunch', 'sandwich'); ", "B: setItem.localStorage('lunch', 'sandwich');", "C: localStorage.setItem('lunch', 'sandwich'); ", "D: getItem.localStorage.('lunch', 'sandwich');"],
+        correctAnswer: "C: localStorage.setItem('lunch', 'sandwich'); ",
+    },
 ];
 //WHEN I click the start button
 //THEN a timer starts and I am presented with a question
+
 function startGame() {
     console.log("button click");
+    introBox.style.display = "block";
+    introBox.style.display ="none";
     countdown();
     displayQuestions();
     displayAnswers();
@@ -67,14 +70,13 @@ function countdown() {
 //THEN I am presented with another question
 function displayQuestions() {
     //createElement that serves as the box where the question will go, can use classes and ID. Update text content, use an array of questions
-    //for (var i = 0; i < questionArray.length; i++){
     //reset the question area
     questionText.innerHTML = "";
     var questionContent = document.createElement("section");
     questionContent.textContent = quizList[currentQuestion].question;
     questionText.appendChild(questionContent);
 };
-
+// set for multiple questions, pass in different question in display questions, loop to display questions, array to answers 
 function displayAnswers() {
     questionAnswers.innerHTML = "";
     for (var i = 0; i < quizList[currentQuestion].choices.length; i++) {
@@ -84,11 +86,12 @@ function displayAnswers() {
         questionAnswers.appendChild(answersContent);
     }
 };
-// set for multiple questions, pass in different question in display questions, loop to display questions, array to answers 
+//WHEN I answer a question incorrectly
+//THEN time is subtracted from the clock
 function authenticate() {
     console.log("button clicked", this.textContent);
 
-    var answer = quizList[currentQuestion].answer;
+    var answer = quizList[currentQuestion].correctAnswer;
     if (this.textContent === answer) {
         newTime.textContent = "Correct";
         setTimeout(function () {
@@ -97,7 +100,7 @@ function authenticate() {
             displayQuestions();
         }, 1000)
     }
-    else {
+    else if (this.textContent !== answer) {
         timeLeft -= 15;
         newTime.textContent = "Incorrect";
         setTimeout(function () {
@@ -105,20 +108,15 @@ function authenticate() {
             displayAnswers();
             displayQuestions();
         }, 1000)
+    } else {
+        quizList[currentQuestion].question = "";
+        clearInterval(timeInterval);
     }
     currentQuestion = currentQuestion + 1;
 };
 
-
-//WHEN I answer a question incorrectly
-//THEN time is subtracted from the clock
-
-
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
-function endGame() {
-
-};
 
 //WHEN the game is over
 //THEN I can save my initials and score
@@ -126,3 +124,5 @@ function highScore() {
 
 }
 startBtn.addEventListener("click", startGame);
+
+
