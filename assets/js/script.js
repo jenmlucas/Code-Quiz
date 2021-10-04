@@ -1,11 +1,17 @@
+//buttons
 var startBtn = document.getElementById("startButton");
-console.log(startBtn);
+var submitBtn = document.getElementById("submit");
+var highScoreBtn = document.getElementById("viewHighScores");
+//timer
 var timerBegins = document.getElementById("timerbegins");
+var timeInterval
+//
+var questionBox = document.getElementsByClassName("questionBox");
 var questionText = document.getElementById("questionText");
 var questionAnswers = document.getElementById("questionAnswers");
 var newTime = document.getElementById("newTime");
 var introBox = document.getElementById("introBox");
-var timeInterval 
+var nameInput = document.getElementsByClassName("name-input");
 var currentQuestion = 0;
 
 var quizList = [
@@ -91,14 +97,13 @@ function displayAnswers() {
 //THEN time is subtracted from the clock
 function authenticate() {
     console.log("button clicked", this.textContent);
-
     var answer = quizList[currentQuestion].correctAnswer;
     if (this.textContent === answer) {
         newTime.textContent = "Correct";
         setTimeout(function () {
             if (currentQuestion >= quizList.length){
                 clearInterval(timeInterval);
-                return; //place end function call back here instead of return
+                //endGame(); //place end function call back here instead of return
             }
             newTime.textContent = "";
             displayAnswers();
@@ -111,7 +116,7 @@ function authenticate() {
         setTimeout(function () {
             if (currentQuestion >= quizList.length){
                 clearInterval(timeInterval);
-                return; //place end function call back here instead of return
+                //endGame(); //place end function call back here instead of return
             }
             newTime.textContent = "";
             displayAnswers();
@@ -127,11 +132,33 @@ function authenticate() {
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
 
+// I want the endGame function to initate my highScore
+
+//1. I know I need to create a function
+//2. that function needs to be able to hold the score in the localStorage
+//3. I need to be able to write initials and have a submit button
+
+//4. to do this. I will create a submit button with addEventListener
+//5. I will need to create  an element
+//6. I need to append it to a section within my html.
+//7. I want my sub
+function endGame() {
+    console.log("button click");
+    nameInput.innerHTML= "";
+    var highScoreContent = createElement("form");
+    highScoreContent.textContent = "";
+    highScoreBtn.addEventListener("click", highScoreForm);
+   nameInput.appendChild(highScoreContent);
+};
+
 //WHEN the game is over
 //THEN I can save my initials and score
-function highScore() {
-
-}
+//function highScoreForm() {
+    //console.log("button click");
+    //introBox.remove();
+    //questionBox.remove();
+    
+//}
 startBtn.addEventListener("click", startGame);
-
+submitBtn.addEventListener("click", endGame);
 

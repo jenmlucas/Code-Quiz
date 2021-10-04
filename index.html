@@ -24,14 +24,28 @@
     </section>
 
     
-     <section>
+     <section class="questionBox">
         <div id="timerbegins"></div>
          <p id="questionText" class= "correct"></p>
          <article id="questionAnswers"></article>
          <p id= "newTime"></p>
      </section>
 
+     <section class="name-input">
+        <form>
+         <h2> Quiz Completed</h2>
+         <h3> Your Final Score: </h3>
+         <p> Great job! You completed the quiz! <br /> Enter your name below to save your score. </p>
+             <div>
+             <input type= "text" name="name" placeholder="Please Write Name"/>
+         </div>
+         <button id="submit"> Submit Score</button>
+         <button id="viewHighScores"> View High Scores</button>
+         </form> 
+     </section>
 </main>
+
+
 
     <script src="./assets/js/script.js"></script>
 </body>
