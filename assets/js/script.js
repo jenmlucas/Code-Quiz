@@ -11,7 +11,6 @@ var questionText = document.getElementById("questionText");
 var questionAnswers = document.getElementById("questionAnswers");
 var newTime = document.getElementById("newTime");
 var introBox = document.getElementById("introBox");
-var nameInput = document.getElementsByClassName("name-input");
 var currentQuestion = 0;
 
 var quizList = [
@@ -48,7 +47,7 @@ var quizList = [
 function startGame() {
     console.log("button click");
     introBox.style.display = "block";
-    introBox.style.display ="none";
+    introBox.style.display = "none";
     countdown();
     displayQuestions();
     displayAnswers();
@@ -58,7 +57,7 @@ var timeLeft = 60;
 
 function countdown() {
     timerBegins.textContent = timeLeft + ' seconds remaining';
-    timeLeft --;
+    timeLeft--;
     timeInterval = setInterval(function () {
         if (timeLeft > 1) {
             timerBegins.textContent = timeLeft + ' seconds remaining';
@@ -93,6 +92,8 @@ function displayAnswers() {
         questionAnswers.appendChild(answersContent);
     }
 };
+
+
 //WHEN I answer a question incorrectly
 //THEN time is subtracted from the clock
 function authenticate() {
@@ -101,9 +102,9 @@ function authenticate() {
     if (this.textContent === answer) {
         newTime.textContent = "Correct";
         setTimeout(function () {
-            if (currentQuestion >= quizList.length){
+            if (currentQuestion >= quizList.length) {
                 clearInterval(timeInterval);
-                //endGame(); //place end function call back here instead of return
+                endGame();
             }
             newTime.textContent = "";
             displayAnswers();
@@ -114,17 +115,19 @@ function authenticate() {
         timeLeft -= 15;
         newTime.textContent = "Incorrect";
         setTimeout(function () {
-            if (currentQuestion >= quizList.length){
+            if (currentQuestion >= quizList.length) {
                 clearInterval(timeInterval);
-                //endGame(); //place end function call back here instead of return
+                endGame();
             }
             newTime.textContent = "";
             displayAnswers();
             displayQuestions();
         }, 1000)
-    } else {
-        quizList[currentQuestion].question = "";
-        clearInterval(timeInterval);
+        var scoreFormHandler = function (event) {
+            event.preventDefault();
+            var scoreNameInput = document.querySelector("input[name='task-name']").value;
+            scoreNameInput.appendChild(form);
+        }
     }
     currentQuestion = currentQuestion + 1;
 };
@@ -144,21 +147,23 @@ function authenticate() {
 //7. I want my sub
 function endGame() {
     console.log("button click");
-    nameInput.innerHTML= "";
-    var highScoreContent = createElement("form");
-    highScoreContent.textContent = "";
-    highScoreBtn.addEventListener("click", highScoreForm);
-   nameInput.appendChild(highScoreContent);
+    console.log("button click");
+    localStorage
+    //nameInput.innerHTML = "";
+    //var highScoreContent = localStorage.getItem("form");
+    //highScoreContent.textContent = "";
+    // highScoreBtn.addEventListener("click", highScoreForm);
+    // nameInput.appendChild(highScoreContent);
+
 };
 
 //WHEN the game is over
 //THEN I can save my initials and score
 //function highScoreForm() {
-    //console.log("button click");
-    //introBox.remove();
-    //questionBox.remove();
-    
-//}
+//console.log("button click");
+//introBox.remove();
+//questionBox.remove();
 startBtn.addEventListener("click", startGame);
 submitBtn.addEventListener("click", endGame);
+highScoreBtn.addEventListener("click", endGame);
 
