@@ -5,7 +5,7 @@ var questionText = document.getElementById("questionText");
 var questionAnswers = document.getElementById("questionAnswers");
 var newTime = document.getElementById("newTime");
 var introBox = document.getElementById("introBox");
-
+var timeInterval 
 var currentQuestion = 0;
 
 var quizList = [
@@ -51,7 +51,9 @@ function startGame() {
 var timeLeft = 60;
 
 function countdown() {
-    var timeInterval = setInterval(function () {
+    timerBegins.textContent = timeLeft + ' seconds remaining';
+    timeLeft --;
+    timeInterval = setInterval(function () {
         if (timeLeft > 1) {
             timerBegins.textContent = timeLeft + ' seconds remaining';
             timeLeft--;
@@ -61,7 +63,6 @@ function countdown() {
         } else {
             timerBegins.textContent = "";
             clearInterval(timeInterval);
-    
         }
     }, 1000);
 };
@@ -95,6 +96,10 @@ function authenticate() {
     if (this.textContent === answer) {
         newTime.textContent = "Correct";
         setTimeout(function () {
+            if (currentQuestion >= quizList.length){
+                clearInterval(timeInterval);
+                return; //place end function call back here instead of return
+            }
             newTime.textContent = "";
             displayAnswers();
             displayQuestions();
@@ -104,6 +109,10 @@ function authenticate() {
         timeLeft -= 15;
         newTime.textContent = "Incorrect";
         setTimeout(function () {
+            if (currentQuestion >= quizList.length){
+                clearInterval(timeInterval);
+                return; //place end function call back here instead of return
+            }
             newTime.textContent = "";
             displayAnswers();
             displayQuestions();
