@@ -4,7 +4,7 @@ var submitBtn = document.getElementById("submit");
 var highScoreBtn = document.getElementById("viewHighScores");
 //timer
 var timerBegins = document.getElementById("timerbegins");
-var timeInterval
+var timeInterval;
 //
 var questionBox = document.getElementsByClassName("questionBox");
 var questionText = document.getElementById("questionText");
@@ -123,63 +123,55 @@ function authenticate() {
             displayAnswers();
             displayQuestions();
         }, 1000)
-        var scoreFormHandler = function (event) {
-            event.preventDefault();
-            var scoreNameInput = document.querySelector("input[name='task-name']").value;
-            scoreNameInput.appendChild(form);
-        }
+        //var scoreFormHandler = function (event) {
+        // event.preventDefault();
+        //var scoreNameInput = document.querySelector("input[name='task-name']").value;
+        //scoreNameInput.appendChild(form);
     }
     currentQuestion = currentQuestion + 1;
 };
+
 function clickHere() {
     //get High Score
     var scoreForm = document.getElementById("highScoreForm");
-  // get the current value of the form display property
+    // get the current value of the form display property
     var displaySetting = scoreForm.style.display;
     // also get the clock button, so we can change what it says
-    var clickHere = document.getElementById('clickHere');
-    if (displaySetting == "block"){
+    // var clickHere = document.getElementById('clickHere');
+    if (displaySetting == "block") {
         scoreForm.style.display = "none";
-        clickHere.innerHTML ="Click Here";
+        //clickHere.innerHTML = "Click Here";
     }
     else {
-        scoreForm.style.display= "block";
-        clickHere.innerHTML = "Hide Click Here"
+        scoreForm.style.display = "block";
+        // clickHere.innerHTML = "Hide Click Here"
     }
 }
 
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
 
-// I want the endGame function to initate my highScore
-
-//1. I know I need to create a function
-//2. that function needs to be able to hold the score in the localStorage
-//3. I need to be able to write initials and have a submit button
-
-//4. to do this. I will create a submit button with addEventListener
-//5. I will need to create  an element
-//6. I need to append it to a section within my html.
-//7. I want my sub
+//WHEN the game is over
+//THEN I can save my initials and score
 function endGame() {
     console.log("button click");
     console.log("button click");
-    localStorage
-    //nameInput.innerHTML = "";
-    //var highScoreContent = localStorage.getItem("form");
-    //highScoreContent.textContent = "";
-    // highScoreBtn.addEventListener("click", highScoreForm);
-    // nameInput.appendChild(highScoreContent);
-
+    clickHere();
+    questionText.innerHTML = "";
 };
 
-//WHEN the game is over
-//THEN I can save my initials and score
-//function highScoreForm() {
-//console.log("button click");
-//introBox.remove();
-//questionBox.remove();
+function checkHighScores () {
+    myStorage = localStorage;
+    localStorage.setItem()
+};
+
 startBtn.addEventListener("click", startGame);
 submitBtn.addEventListener("click", endGame);
 highScoreBtn.addEventListener("click", endGame);
 
+/// remaining things left to do
+//1. Get remaining time to clear when endGame form pops up
+// 2. Get scores to store to local storage when name is entered and submit is pushed
+//3. Have scores be able to be accessed from front page and end page 
+//4. Give person option to delete high scores 
+//5. have a restart quiz button at the end of game that goes back to home 
