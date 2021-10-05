@@ -131,6 +131,22 @@ function authenticate() {
     }
     currentQuestion = currentQuestion + 1;
 };
+function clickHere() {
+    //get High Score
+    var scoreForm = document.getElementById("highScoreForm");
+  // get the current value of the form display property
+    var displaySetting = scoreForm.style.display;
+    // also get the clock button, so we can change what it says
+    var clickHere = document.getElementById('clickHere');
+    if (displaySetting == "block"){
+        scoreForm.style.display = "none";
+        clickHere.innerHTML ="Click Here";
+    }
+    else {
+        scoreForm.style.display= "block";
+        clickHere.innerHTML = "Hide Click Here"
+    }
+}
 
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over

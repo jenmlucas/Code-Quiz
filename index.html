@@ -29,10 +29,11 @@
          <p id="questionText" class= "correct"></p>
          <article id="questionAnswers"></article>
          <p id= "newTime"></p>
+         <button id="clickHere" onclick="clickHere()">Click Here For High Score</button>
      </section>
 <!-- add hidden property after question show display block visible in if statement-->
      <article>
-        <form id="highScoreForm">
+        <form class="container box" id="highScoreForm" data-state="hidden">
          <h2> Quiz Completed</h2>
          <h3> Your Final Score: </h3>
          <p> Great job! You completed the quiz! <br /> Enter your name below to save your score. </p>
@@ -44,7 +45,6 @@
          <button id="viewHighScores"> View High Scores</button>
          </div>
         </form> 
-
      </article>
 </main>
 
