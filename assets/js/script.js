@@ -5,7 +5,9 @@ var highScoreBtn = document.getElementById("viewHighScores");
 //timer
 var timerBegins = document.getElementById("timerbegins");
 var timeInterval;
-//
+// storage content
+var fullNameInput = document.querySelector("name") 
+//question content
 var questionBox = document.getElementsByClassName("questionBox");
 var questionText = document.getElementById("questionText");
 var questionAnswers = document.getElementById("questionAnswers");
@@ -153,24 +155,30 @@ function clickHere() {
 
 //WHEN the game is over
 //THEN I can save my initials and score
+
 function endGame() {
-    console.log("button click");
-    console.log("button click");
     clickHere();
     questionText.innerHTML = "";
-};
+    timerBegins.textContent= "";
 
-function checkHighScores () {
-    myStorage = localStorage;
-    localStorage.setItem()
-};
+submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("button clicked");
+    let 
+// create user object from submission
+    var user = {
+        name: fullNameInput.value.trim(),
+    }
+    localStorage.setItem("user", JSON.stringify(user));
+    
+})};
 
 startBtn.addEventListener("click", startGame);
 submitBtn.addEventListener("click", endGame);
 highScoreBtn.addEventListener("click", endGame);
 
 /// remaining things left to do
-//1. Get remaining time to clear when endGame form pops up
+//1. Get remaining time to clear when endGame form pops up---- DONE
 // 2. Get scores to store to local storage when name is entered and submit is pushed
 //3. Have scores be able to be accessed from front page and end page 
 //4. Give person option to delete high scores 
