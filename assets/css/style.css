@@ -29,3 +29,7 @@ body {
 #clickHere {
     display: none;
 }
+
+#list{
+    margin-left: 60px;
+}

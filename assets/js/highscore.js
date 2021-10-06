@@ -2,16 +2,16 @@ var nameAndScore = document.getElementById("nameAndScore");
 var listHighScores = document.getElementById("listHighScores");
 
 function viewHighScore () {
-    //get High Score
-    let highscores = JSON.parse(window.localStorage.getItem("user")) || [];
+    // get high scores
+    var highscores = JSON.parse(window.localStorage.getItem("user")) || [];
     console.log(highscores);
     highscores.sort(function (a,b){ 
        return(b.Score-a.Score);
    })
     highscores.forEach(function (Score){
-       let li= document.createElement("li");
-       li.textContent= Score.Name + " - " + Score.Score; 
-       let list = document.getElementById("nameAndScore");
+       var li= document.createElement("li");
+       li.textContent=Score.Name + " - " + Score.Score; 
+       var list = document.getElementById("nameAndScore");
        list.appendChild(li);
    })
  }   

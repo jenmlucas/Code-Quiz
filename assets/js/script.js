@@ -5,11 +5,15 @@ var highScoreBtn = document.getElementById("viewHighScores");
 //timer
 var timerBegins = document.getElementById("timerbegins");
 var timeInterval;
+var timeLeft;
+// storage content
+var fullNameInput = document.querySelector("#name") 
 // storage content/ scores
 var fullNameInput = document.querySelector("#name"); 
 var finalScore = document.getElementById("finalScore");
+var nameAndScore = document.getElementById("nameAndScore")
 var nameAndScore = document.getElementById("nameAndScore");
-let highscores= [];
+var highscores= [];
     highscores = JSON.parse(window.localStorage.getItem("user")) || [];
 //question content
 var questionBox = document.getElementsByClassName("questionBox");
@@ -33,7 +37,6 @@ var quizList = [
         question: "Question 2: The DOM is built into the JavaScript language.",
         choices: ["A: True", "B: False"],
         correctAnswer: "B: False",
-
     },
     {
         question: "Question 3: How do we use JavaScript to get the information entered into a form’s input field?",
@@ -53,7 +56,6 @@ var quizList = [
 ];
 //WHEN I click the start button
 //THEN a timer starts and I am presented with a question
-
 function startGame() {
     console.log("button click");
     introBox.style.display = "block";
@@ -64,7 +66,6 @@ function startGame() {
 };
 
 var timeLeft = 60;
-
 function countdown() {
     timerBegins.textContent = timeLeft + ' seconds remaining';
     timeLeft--;
@@ -82,7 +83,6 @@ function countdown() {
         }
     }, 1000);
 };
-
 //WHEN I answer a question
 //THEN I am presented with another question
 function displayQuestions() {
@@ -103,8 +103,6 @@ function displayAnswers() {
         questionAnswers.appendChild(answersContent);
     }
 };
-
-
 //WHEN I answer a question incorrectly
 //THEN time is subtracted from the clock
 function authenticate() {
@@ -137,14 +135,12 @@ function authenticate() {
     }
     currentQuestion = currentQuestion + 1;
 };
-
 function clickHere() {
     //get High Score
     var scoreForm = document.getElementById("highScoreForm");
     // get the current value of the form display property
     var displaySetting = scoreForm.style.display;
     // also get the clock button, so we can change what it says
-    // var clickHere = document.getElementById('clickHere');
     if (displaySetting == "block") {
         scoreForm.style.display = "none";
     }
@@ -155,14 +151,22 @@ function clickHere() {
 
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
+
+//WHEN the game is over
+//THEN I can save my initials and score
+
 function endGame() {
+    if (timeLeft < 0){
+        timeLeft = 0;
+    }
     clickHere();
-    questionText.innerHTML = "";
-    questionAnswers.innerHTML = "";
+    questionAnswers.style.display= "none";
+    questionText.style.display= "none";
     timerBegins.textContent= "";
-    finalScore.textContent= "Your Final Score: " + timeLeft;
-    
+    finalScore.textContent= "Your Final Score: " + timeLeft;   
+   
 };
+
 //WHEN the game is over
 //THEN I can save my initials and score
 submitBtn.addEventListener("click", function (event) {
@@ -177,6 +181,9 @@ submitBtn.addEventListener("click", function (event) {
     localStorage.setItem("user", JSON.stringify(highscores));
     window.location.href="highscoreform.html";
 });
+
+
+
 // second js file to contain highscore form
 
 startBtn.addEventListener("click", startGame);
@@ -185,6 +192,10 @@ startBtn.addEventListener("click", startGame);
 /// remaining things left to do
 //1. Get remaining time to clear when endGame form pops up---- DONE
 // 1.5 Get names to store to local storage ---Done
+// 2. Get scores to store to local storage when name is entered and submit is pushed (You can maintain an highscore array and update it to show the highscores whenever a game is finished)
+//3. Have scores be able to be accessed from front page and end page 
+//4. Give person option to delete high scores 
+//5. have a restart quiz button at the end of game that goes back to hom
 // 2. Get scores to store to local storage when name is entered and submit is pushed (You can maintain an highscore array and update it to show the highscores whenever a game is finished)-- done
 //3. Have scores be able to be accessed from front page-- done
 //4. Give person option to delete high scores -- done
