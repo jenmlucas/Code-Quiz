@@ -1,28 +1,35 @@
 # Code-Quiz# 
 
 ## Description
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+Used HTML, CSS, and Javascript to create a interactive question game about Javascript.
+HTML
+• created two HTML files to make code better to read and understand. The first, index.html holds the the introduction and questions. The second html file contains the High Score form. 
+CSS
+• Used to make all buttons the same and to border the quiz itself.
+Javascript
+• Created an interactive quiz game that not only times the player but also keeps their high scores.
+• Made the code easier to read by using some shorthand syntax.
+• Labeled each question as correct or incorrect once the answer is pressed. If the answer is incorrect the timer will subtract 15 seconds. Game ends once all questions are completed or the timer runs out. 
 
+## Production Website
+[Code Quiz Link](https://jenmlucas.github.io/Code-Quiz/ "Code Quiz")
 
 ## Usage
+This is how the website will look on your device. 
+![Website Screenshot](./assets/images/codeQuizScreenshot.png)
   
-    ![Code Quiz Screenshot](./assets)
-    
 ## Credits
-List your collaborators, if any, with links to their GitHub profiles.
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-If you followed tutorials, include links to those here as well.
 
-## License
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
----
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+[University of Arizona Bootcamp](https://courses.bootcampspot.com "UofA")
+
+[Stack Overflow](https://stackoverflow.com/questions/7549561/section-vs-article-html5/ "StackOverflow")
+
+[MDN Web DOCs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside "MDN")
+
+[w3schools](https://www.w3schools.com/ "w3schools")
 
 ## Badges
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+![badmath](https://img.shields.io/badge/Javascript-75%25-blue)
+![badmath](https://img.shields.io/badge/HTML-25%25-green)
+![badmath](https://img.shields.io/badge/CSS-25%25-lightgrey)
 
