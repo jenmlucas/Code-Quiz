@@ -16,8 +16,8 @@ function viewHighScore () {
     //      scoreFormList.style.display = "block";
     //      // clickHere.innerHTML = "Hide Click Here"
     //  }
-    let highscores= [];
-    highscores = JSON.parse(window.localStorage.getItem("user")) || [];
+    //let highscores= [];
+    let highscores = JSON.parse(window.localStorage.getItem("user")) || [];
     console.log(highscores);
     highscores.sort(function (a,b){ 
        return(b.Score-a.Score);
