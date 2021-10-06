@@ -5,6 +5,7 @@ var highScoreBtn = document.getElementById("viewHighScores");
 //timer
 var timerBegins = document.getElementById("timerbegins");
 var timeInterval;
+var timeLeft;
 // storage content
 var fullNameInput = document.querySelector("#name") 
 var finalScore = document.getElementById("finalScore");
@@ -74,6 +75,7 @@ function countdown() {
         } else {
             timerBegins.textContent = "";
             clearInterval(timeInterval);
+            endGame();
         }
     }, 1000);
 };
@@ -129,10 +131,6 @@ function authenticate() {
             displayAnswers();
             displayQuestions();
         }, 1000)
-        //var scoreFormHandler = function (event) {
-        // event.preventDefault();
-        //var scoreNameInput = document.querySelector("input[name='task-name']").value;
-        //scoreNameInput.appendChild(form);
     }
     currentQuestion = currentQuestion + 1;
 };
@@ -146,11 +144,9 @@ function clickHere() {
     // var clickHere = document.getElementById('clickHere');
     if (displaySetting == "block") {
         scoreForm.style.display = "none";
-        //clickHere.innerHTML = "Click Here";
     }
     else {
         scoreForm.style.display = "block";
-        // clickHere.innerHTML = "Hide Click Here"
     }
 }
 
@@ -163,8 +159,10 @@ function clickHere() {
 function endGame() {
     clickHere();
     questionText.innerHTML = "";
+    questionAnswers.innerHTML = "";
     timerBegins.textContent= "";
     finalScore.textContent= "Your Final Score: " + timeLeft;
+    
 };
 
 submitBtn.addEventListener("click", function (event) {
@@ -174,7 +172,6 @@ submitBtn.addEventListener("click", function (event) {
     var user = {
         Name: fullNameInput.value.trim(),
         Score: timeLeft
-        //score: timeLeft.value.trim(),
     }
     highscores.push(user);
     localStorage.setItem("user", JSON.stringify(highscores));
@@ -185,8 +182,7 @@ submitBtn.addEventListener("click", function (event) {
 
 
 startBtn.addEventListener("click", startGame);
-//submitBtn.addEventListener("click", event);
-//highScoreBtn.addEventListener("click", viewHighScore);
+
 
 /// remaining things left to do
 //1. Get remaining time to clear when endGame form pops up---- DONE
