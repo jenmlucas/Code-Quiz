@@ -9,7 +9,7 @@ body {
     margin: 30px 600px 0px 600px;
 }
 
-#startButton, #submit, #viewHighScores, #highScores{
+#startButton, #submit, #viewHighScores, #highScores, #restart, #highscore, #clearHighScore{
     color: white;
     background-color: blue;
     font-size: 15px;
