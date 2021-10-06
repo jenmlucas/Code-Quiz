@@ -7,7 +7,10 @@ var timerBegins = document.getElementById("timerbegins");
 var timeInterval;
 // storage content
 var fullNameInput = document.querySelector("#name") 
-
+var finalScore = document.getElementById("finalScore");
+var nameAndScore = document.getElementById("nameAndScore")
+let highscores= [];
+    highscores = JSON.parse(window.localStorage.getItem("user")) || [];
 //question content
 var questionBox = document.getElementsByClassName("questionBox");
 var questionText = document.getElementById("questionText");
@@ -161,7 +164,7 @@ function endGame() {
     clickHere();
     questionText.innerHTML = "";
     timerBegins.textContent= "";
-
+    finalScore.textContent= "Your Final Score: " + timeLeft;
 };
 
 submitBtn.addEventListener("click", function (event) {
@@ -170,19 +173,25 @@ submitBtn.addEventListener("click", function (event) {
 // create user object from submission
     var user = {
         Name: fullNameInput.value.trim(),
+        Score: timeLeft
         //score: timeLeft.value.trim(),
     }
-    localStorage.setItem("user", JSON.stringify(user));
+    highscores.push(user);
+    localStorage.setItem("user", JSON.stringify(highscores));
+    window.location.href="highscoreform.html";
 });
-    
+
+ 
+
+
 startBtn.addEventListener("click", startGame);
 //submitBtn.addEventListener("click", event);
-highScoreBtn.addEventListener("click", endGame);
+//highScoreBtn.addEventListener("click", viewHighScore);
 
 /// remaining things left to do
 //1. Get remaining time to clear when endGame form pops up---- DONE
 // 1.5 Get names to store to local storage ---Done
-// 2. Get scores to store to local storage when name is entered and submit is pushed
+// 2. Get scores to store to local storage when name is entered and submit is pushed (You can maintain an highscore array and update it to show the highscores whenever a game is finished)
 //3. Have scores be able to be accessed from front page and end page 
 //4. Give person option to delete high scores 
 //5. have a restart quiz button at the end of game that goes back to hom

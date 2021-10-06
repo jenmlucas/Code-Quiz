@@ -21,7 +21,7 @@
         Each High Score will be recorded, so you can challenge your peers!
      </p>
      <button id= "startButton"> Start </button>
-     <button id="highScores" > High Scores </button>
+     <a href="highscoreform.html"> High Scores </a>
     </header>
 
     
@@ -35,14 +35,14 @@
      <article>
         <form class="container box" id="highScoreForm" data-state="hidden">
          <h2> Quiz Completed</h2>
-         <h3> Your Final Score: </h3>
+         <h3 id="finalScore"> Your Final Score: </h3>
          <p> Great job! You completed the quiz! <br /> Enter your name below to save your score. </p>
              <div class= "scoreForm" >
              <input id= "name" type= "text" name="name" placeholder="Please Write Name"/>
          </div>
          <div class= "scoreForm">
          <button id="submit"> Submit Score</button>
-         <button id="viewHighScores"> View High Scores</button>
+         <a href="highscoreform.html"> High Scores </a>
          </div>
         </form> 
      </article>
