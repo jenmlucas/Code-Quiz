@@ -2,21 +2,7 @@ var nameAndScore = document.getElementById("nameAndScore");
 var listHighScores = document.getElementById("listHighScores");
 
 function viewHighScore () {
-    //  //get High Score
-    //  var scoreFormList = document.getElementById("listHighScores");
-    //  // get the current value of the form display property
-    //  var displaySetting = scoreForm.style.display;
-    //  // also get the clock button, so we can change what it says
-    //  // var clickHere = document.getElementById('clickHere');
-    //  if (displaySetting == "block") {
-    //      scoreFormList.style.display = "none";
-    //      //clickHere.innerHTML = "Click Here";
-    //  }
-    //  else {
-    //      scoreFormList.style.display = "block";
-    //      // clickHere.innerHTML = "Hide Click Here"
-    //  }
-    //let highscores= [];
+    //get High Score
     let highscores = JSON.parse(window.localStorage.getItem("user")) || [];
     console.log(highscores);
     highscores.sort(function (a,b){ 

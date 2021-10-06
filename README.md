@@ -1,11 +1,14 @@
-# Code-Quiz# 
+# Code-Quiz
 
 ## Description
 Used HTML, CSS, and Javascript to create a interactive question game about Javascript.
+
 HTML
 • created two HTML files to make code better to read and understand. The first, index.html holds the the introduction and questions. The second html file contains the High Score form. 
+
 CSS
 • Used to make all buttons the same and to border the quiz itself.
+
 Javascript
 • Created an interactive quiz game that not only times the player but also keeps their high scores.
 • Made the code easier to read by using some shorthand syntax.

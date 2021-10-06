@@ -5,19 +5,22 @@ var highScoreBtn = document.getElementById("viewHighScores");
 //timer
 var timerBegins = document.getElementById("timerbegins");
 var timeInterval;
-var timeLeft;
-// storage content
-var fullNameInput = document.querySelector("#name") 
+// storage content/ scores
+var fullNameInput = document.querySelector("#name"); 
 var finalScore = document.getElementById("finalScore");
-var nameAndScore = document.getElementById("nameAndScore")
+var nameAndScore = document.getElementById("nameAndScore");
 let highscores= [];
     highscores = JSON.parse(window.localStorage.getItem("user")) || [];
 //question content
 var questionBox = document.getElementsByClassName("questionBox");
 var questionText = document.getElementById("questionText");
 var questionAnswers = document.getElementById("questionAnswers");
+// for correct and incorrect 
 var newTime = document.getElementById("newTime");
+// for introbox
 var introBox = document.getElementById("introBox");
+
+//start of questions
 var currentQuestion = 0;
 
 var quizList = [
@@ -152,10 +155,6 @@ function clickHere() {
 
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
-
-//WHEN the game is over
-//THEN I can save my initials and score
-
 function endGame() {
     clickHere();
     questionText.innerHTML = "";
@@ -164,7 +163,8 @@ function endGame() {
     finalScore.textContent= "Your Final Score: " + timeLeft;
     
 };
-
+//WHEN the game is over
+//THEN I can save my initials and score
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
     console.log("button clicked");
@@ -177,9 +177,7 @@ submitBtn.addEventListener("click", function (event) {
     localStorage.setItem("user", JSON.stringify(highscores));
     window.location.href="highscoreform.html";
 });
-
- 
-
+// second js file to contain highscore form
 
 startBtn.addEventListener("click", startGame);
 
@@ -187,7 +185,7 @@ startBtn.addEventListener("click", startGame);
 /// remaining things left to do
 //1. Get remaining time to clear when endGame form pops up---- DONE
 // 1.5 Get names to store to local storage ---Done
-// 2. Get scores to store to local storage when name is entered and submit is pushed (You can maintain an highscore array and update it to show the highscores whenever a game is finished)
-//3. Have scores be able to be accessed from front page and end page 
-//4. Give person option to delete high scores 
-//5. have a restart quiz button at the end of game that goes back to hom
+// 2. Get scores to store to local storage when name is entered and submit is pushed (You can maintain an highscore array and update it to show the highscores whenever a game is finished)-- done
+//3. Have scores be able to be accessed from front page-- done
+//4. Give person option to delete high scores -- done
+//5. have a restart quiz button at the end of game that goes back to home -- done
